@@ -1,0 +1,46 @@
+{% extends "layout.html" %}
+{% block body %}
+<div class="container main">
+  
+  <div class="panel panel-default">
+    <div class="panel-body">
+      <ol class="breadcrumb">
+	<li><a href="/">Home</a></li>
+	<li class="active">{{ beer }}</li>
+      </ol>
+      <div class="page-header">
+	<h1>{{ beer }}</h1>
+      </div>
+      <div class="lead">Try these beers similar to <em>{{beer}}</em></div>
+      <table class="table table-striped">
+	<thead>
+	  <tr>
+	    <th>Beer</th>
+	    <th>Style</th>
+	    <th>ABV</th>
+	  </tr>
+	</thead>
+	<tbody>
+	  {% for item in recommends %}
+	  <tr>
+	    <td>{{ item.beerName }}</td>
+	    <td>{{ item.beerStyle }}</td>
+	    <td>{{ item.beerABV }}</td>
+	  </tr>
+	  {% endfor %}
+	</tbody>
+      </table>
+
+    </div>
+
+  </div>
+
+
+</div>
+    
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+{% endblock %}
