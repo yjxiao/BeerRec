@@ -18,7 +18,7 @@ def home():
     beers.sort()
     return render_template('index.html', beers=beers)
 
-@app.route('/<beername>')
+@app.route('/<path:beername>')
 def beer_rec(beername):
     beers = pd.read_csv(DATAFILE, index_col='beerName')
     cluster = beers[beers.index == beername.encode('utf8')].cluster[0]
